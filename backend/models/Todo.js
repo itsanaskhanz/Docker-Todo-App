@@ -15,11 +15,10 @@ const todoSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    lowercase: true
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, { timestamps: true });
 

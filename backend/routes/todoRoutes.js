@@ -1,20 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const {
+  getTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo
+} = require('../controller/todoController');
 
-router.get('/get', (req, res) => {
-  console.log("get all todos route hit");
-});
+const protect = require('../middleware/authMiddleware');
 
-router.post('/create', (req, res) => {
-  console.log("create todo route hit");
-});
-
-router.put('/update/:id', (req, res) => {
-  console.log(`update todo with id ${req.params.id} route hit`);
-});
-
-router.delete('/delete/:id', (req, res) => {
-  console.log(`delete todo with id ${req.params.id} route hit`);
-});
+router.get('/get', protect, getTodos);
+router.post('/create', protect, createTodo);
+router.put('/update/:id', protect, updateTodo);
+router.delete('/delete/:id', protect, deleteTodo);
 
 module.exports = router;

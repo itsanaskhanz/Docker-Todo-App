@@ -16,7 +16,7 @@ app.use(cors({
 }));
 
 app.use('/auth', authRoutes);
-app.use('/todo', todoRoutes);
+app.use('/todos', todoRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
